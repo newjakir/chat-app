@@ -1,0 +1,21 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Clone Repository') {
+            steps {
+                git branch: 'main', credentialsId: '456c88b8-2ee6-4e59-a69d-f41a035643c6', url: 'git@github.com:newjakir/chat-app-nodejs.git'
+            }
+        }
+
+        stage('Print hello.txt') {
+            steps {
+                script {
+                    sh 'cat /home/ubuntu/workspace/chat-app-jakir007/hello.txt'
+                    //def fileContent = readFile('hello.txt')
+                    //echo "Contents of hello.txt:\n${fileContent}"
+                }
+            }
+        }
+    }
+}
